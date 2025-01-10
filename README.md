@@ -14,7 +14,13 @@ First, download the latest version of `yt-dlp`:
 npm run download
 ```
 
-Then run the bot with:
+Then make sure `yt-dlp` is executable:
+
+```
+chmod 700 yt-dlp
+```
+
+Finally, run the bot:
 
 ```
 TELEGRAM_BOT_TOKEN=<token> npm start
