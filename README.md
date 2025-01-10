@@ -4,6 +4,8 @@ A simple Telegram bot that allows you to send a supported link from yt-dlp, and 
 
 Make sure you have node 18+ and ffmpeg installed.
 
+Set up [Telegram bot](https://core.telegram.org/bots/api) and get an access token.
+
 # Usage
 
 First, download the latest version of `yt-dlp`:
@@ -15,5 +17,5 @@ npm run download
 Then run the bot with:
 
 ```
-npm run bot
+TELEGRAM_BOT_TOKEN=<token> npm run bot
 ```
