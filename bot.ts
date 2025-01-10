@@ -28,6 +28,8 @@ bot.on(message("text"), (ctx) => {
 		return;
 	}
 
+  ctx.reply('👀')
+
 	const ytdlp = spawn("./yt-dlp", ["-o", "-", ctx.message.text]);
 
 	const readableStream = new Readable({
