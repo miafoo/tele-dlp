@@ -47,7 +47,7 @@ bot.on(message("text"), (ctx) => {
 	});
 
 	ytdlp.stdout.on("data", (data) => readableStream.push(data));
-	ytdlp.stderr.on("data", (data) => ctx.reply(`yt-dlp stderr: ${data}`));
+	ytdlp.stderr.on("data", (data) => console.log(`yt-dlp stderr: ${data}`));
 
 	ytdlp.on("close", (code) => {
 		if (code !== 0) {
@@ -56,7 +56,9 @@ bot.on(message("text"), (ctx) => {
 		readableStream.push(null);
 	});
 
-	ctx.replyWithVideo({ source: readableStream });
+	ctx
+		.replyWithVideo({ source: readableStream })
+		.catch((err) => ctx.reply(`Something went wrong: ${err}`));
 });
 
 bot.launch();
