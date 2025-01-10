@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx --watch bot.ts",
-    "bot": "tsx bot.ts",
+    "start": "tsx bot.ts",
     "download": "tsx download.ts",
     "lint": "biome check *.ts",
     "lint:fix": "biome check *.ts --fix"
@@ -15,7 +15,9 @@
   "description": "",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node": "^22.10.5",
+    "@types/node": "^22.10.5"
+  },
+  "dependencies": {
     "telegraf": "^4.16.3",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"

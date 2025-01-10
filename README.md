@@ -17,5 +17,5 @@ npm run download
 Then run the bot with:
 
 ```
-TELEGRAM_BOT_TOKEN=<token> npm run bot
+TELEGRAM_BOT_TOKEN=<token> npm start
 ```
