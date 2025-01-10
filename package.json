@@ -1,0 +1,23 @@
+{
+  "name": "telegram-yt-dlp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx --watch bot.ts",
+    "bot": "tsx bot.ts",
+    "download": "tsx download.ts",
+    "lint": "biome check *.ts",
+    "lint:fix": "biome check *.ts --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^22.10.5",
+    "telegraf": "^4.16.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
