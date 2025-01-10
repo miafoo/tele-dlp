@@ -21,7 +21,7 @@ bot.start((ctx) => ctx.reply("hi. send me a link."));
 
 bot.on(message("text"), (ctx) => {
 	const fromName = ctx.from.username || ctx.from.first_name || ctx.from.id;
-	console.log(`> ${fromName}: ${ctx.message.text}`);
+	console.log(`[${new Date().toISOString()}] @${fromName}: ${ctx.message.text}`);
 
 	if (!/https?:\/\//i.test(ctx.message.text)) {
 		ctx.reply("Not sure what you want me to do!");
