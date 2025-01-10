@@ -16,12 +16,20 @@ npm run download
 
 Then make sure `yt-dlp` is executable:
 
-```
+```bash
 chmod 700 yt-dlp
 ```
 
 Finally, run the bot:
 
-```
+```bash
 TELEGRAM_BOT_TOKEN=<token> npm start
+```
+
+# Config
+
+If you would like to set an allow list, you can do:
+
+```bash
+TELEGRAM_BOT_ALLOW_LIST=username1,username2,username3
 ```

@@ -4,15 +4,16 @@ import { Readable } from "node:stream";
 import { Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
 
-const token = process.env.TELEGRAM_BOT_TOKEN;
-if (!token) {
-	throw new Error("Missing TELEGRAM_BOT_TOKEN");
-}
-
 try {
 	accessSync("yt-dlp");
 } catch {
 	throw new Error("Please run `npm run download` first");
+}
+
+const allowList = process.env.ALLOW_LIST?.split(",") || [];
+const token = process.env.TELEGRAM_BOT_TOKEN;
+if (!token) {
+	throw new Error("Missing TELEGRAM_BOT_TOKEN");
 }
 
 const bot = new Telegraf(token);
@@ -20,15 +21,24 @@ const bot = new Telegraf(token);
 bot.start((ctx) => ctx.reply("hi. send me a link."));
 
 bot.on(message("text"), (ctx) => {
-	const fromName = ctx.from.username || ctx.from.first_name || ctx.from.id;
-	console.log(`[${new Date().toISOString()}] @${fromName}: ${ctx.message.text}`);
+	const fromName =
+		ctx.from.username || ctx.from.first_name || String(ctx.from.id);
+
+	if (allowList.length > 0 && !allowList.includes(fromName)) {
+		ctx.reply("Get out");
+		return;
+	}
+
+	console.log(
+		`[${new Date().toISOString()}] @${fromName}: ${ctx.message.text}`,
+	);
 
 	if (!/https?:\/\//i.test(ctx.message.text)) {
 		ctx.reply("Not sure what you want me to do!");
 		return;
 	}
 
-  ctx.reply('👀')
+	ctx.reply("👀");
 
 	const ytdlp = spawn("./yt-dlp", ["-o", "-", ctx.message.text]);
 
