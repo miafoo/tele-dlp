@@ -10,7 +10,7 @@ try {
 	throw new Error("Please run `npm run download` first");
 }
 
-const allowList = process.env.ALLOW_LIST?.split(",") || [];
+const allowList = process.env.TELEGRAM_BOT_ALLOW_LIST?.split(",") || [];
 const token = process.env.TELEGRAM_BOT_TOKEN;
 if (!token) {
 	throw new Error("Missing TELEGRAM_BOT_TOKEN");
